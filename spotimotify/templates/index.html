@@ -1,0 +1,17 @@
+{% extends "layout.html" %}
+{% block title %}{{ super() }} - Home{% endblock title %}
+{% block content %}
+<blockquote>
+    Currently playing:<br/><big>{{ track_name }}</big>
+    <small>{{ track_artist }}, {{ track_album }}
+</blockquote>
+<form method="post">
+<button class="btn btn-info" name="action" value="previous_track">Previous</button>
+{% if state == 'k.playing' %}
+<button class="btn btn-success" name="action" value="pause">Pause</button>
+{% else %}
+<button class="btn btn-success" name="action" value="play">Play</button>
+{% endif %}
+<button class="btn btn-warning" name="action" value="next_track">Next</button>
+{% endblock content %}
+</form>

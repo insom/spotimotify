@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="refresh" content="5">
+        <title>{% block title %}Spotimotify{% endblock title %}</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="">
+        <meta name="author" content="">
+        <link href="/static/bootstrap/css/bootstrap.css" rel="stylesheet">
+        <link href="/static/bootstrap/css/bootstrap-responsive.css" rel="stylesheet">
+        <link href="/static/css/style.css" rel="stylesheet">
+        <!--[if lt IE 9]>
+            <script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
+        {% block morehead %}
+        {% endblock morehead %}
+    </head>
+    <body>
+
+    <div class="container">
+        <div id="flashes">
+            {% block flashes %}
+                {% for category, message in get_flashed_messages(with_categories=true) %}
+                    <div class="alert {{ category and 'alert-' + category or '' }}">
+                        <a class="close" data-dismiss="alert">&times;</a>
+                        {{ message }}
+                    </div>
+                {% endfor %}
+            {% endblock flashes %}
+        </div>
+        <div class="row">
+            <div class="span12">
+                {% block content %}
+                    <p>Welcome to Spotimotify</p><br />
+                {% endblock content %}
+            </div>
+        </div>
+    </div>
+
+
+    <script src="/static/js/jquery-1.7.2.min.js"></script>
+    <script src="/static/bootstrap/js/bootstrap.min.js"></script>
+    <script src="/static/js/bootstrap-ajax-typeahead.js"></script>
+    {% block extrajs %}
+    {% endblock extrajs %}
+    </body>
+</html>
